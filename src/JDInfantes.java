@@ -1,0 +1,290 @@
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JOptionPane;
+
+public class JDInfantes extends javax.swing.JDialog {
+
+    private Conexion cnx;
+
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(JDInfantes.class.getName());
+
+    /**
+     * Creates new form JDInfantes
+     */
+    public JDInfantes(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
+        initComponents();
+        this.setLocationRelativeTo(this);
+    }
+
+    public void obtenerConexion(Conexion cnx) {
+        this.cnx = cnx;
+    }
+
+    public void obtenerInfante(Infante kid) {
+        try {
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+
+            TFCurp.setText(kid.curp);
+            TFNombre.setText(kid.nombre);
+            CBSexo.setSelectedItem(kid.sexo);
+            SFecha.setValue(format.parse(kid.fecha));
+            CBEstado.setSelectedItem(kid.estado);
+        } catch (ParseException ex) {
+            System.getLogger(JDInfantes.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        }
+
+    }
+
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+    private void initComponents() {
+
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        TFNombre = new javax.swing.JTextField();
+        TFCurp = new javax.swing.JTextField();
+        CBSexo = new javax.swing.JComboBox<>();
+        SFecha = new javax.swing.JSpinner();
+        CBEstado = new javax.swing.JComboBox<>();
+        BRegistrar = new javax.swing.JButton();
+        BActualizar = new javax.swing.JButton();
+        BCancelar = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        BBorrar = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel1.setText("CURP:");
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel2.setText("Nombre:");
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel3.setText("Sexo:");
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel4.setText("Fecha de nacimiento:");
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel5.setText("Estado:");
+
+        CBSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Femenino", " " }));
+
+        SFecha.setModel(new javax.swing.SpinnerDateModel());
+
+        CBEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
+
+        BRegistrar.setBackground(new java.awt.Color(102, 0, 204));
+        BRegistrar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        BRegistrar.setForeground(new java.awt.Color(255, 255, 255));
+        BRegistrar.setText("REGISTRAR");
+        BRegistrar.addActionListener(this::BRegistrarActionPerformed);
+
+        BActualizar.setBackground(new java.awt.Color(0, 51, 204));
+        BActualizar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        BActualizar.setForeground(new java.awt.Color(255, 255, 255));
+        BActualizar.setText("ACTUALIZAR");
+        BActualizar.addActionListener(this::BActualizarActionPerformed);
+
+        BCancelar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        BCancelar.setText("CANCELAR");
+        BCancelar.addActionListener(this::BCancelarActionPerformed);
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
+        jLabel6.setText("Datos del infante");
+
+        BBorrar.setBackground(new java.awt.Color(204, 0, 0));
+        BBorrar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        BBorrar.setForeground(new java.awt.Color(255, 255, 255));
+        BBorrar.setText("BORRAR");
+        BBorrar.addActionListener(this::BBorrarActionPerformed);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(BRegistrar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(BActualizar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                        .addComponent(BBorrar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(BCancelar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
+                        .addGap(33, 33, 33)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(SFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(CBEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(TFNombre)
+                                .addComponent(TFCurp, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(CBSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel7)))
+                .addGap(18, 18, 18))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)
+                        .addGap(162, 162, 162))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(18, 18, 18))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(TFCurp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(TFNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(15, 15, 15)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(CBSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(15, 15, 15)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(SFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(15, 15, 15)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(CBEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(63, 63, 63))
+        );
+
+        pack();
+    }// </editor-fold>
+
+    private void BRegistrarActionPerformed(java.awt.event.ActionEvent evt) {
+        SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd");
+        Infante kid = new Infante(
+                TFCurp.getText(),
+                TFNombre.getText(),
+                CBSexo.getSelectedItem().toString(),
+                s.format((Date) SFecha.getValue()),
+                CBEstado.getSelectedItem().toString()
+        );
+
+        if (kid.insertar(cnx.con) == 1) {
+            JOptionPane.showMessageDialog(this, "Infante registrado.");
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "No se pudo realizar el registro.");
+        }
+    }
+
+    private void BActualizarActionPerformed(java.awt.event.ActionEvent evt) {
+        SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd");
+        Infante kid = new Infante(
+                TFCurp.getText(),
+                TFNombre.getText(),
+                CBSexo.getSelectedItem().toString(),
+                s.format((Date) SFecha.getValue()),
+                CBEstado.getSelectedItem().toString()
+        );
+
+        if (kid.actualizar(cnx.con) == 1) {
+            JOptionPane.showMessageDialog(this, "Datos del infante actualizados.");
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "No se pudo realizar el registro.");
+        }
+    }
+
+    private void BBorrarActionPerformed(java.awt.event.ActionEvent evt) {
+        SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd");
+        Infante kid = new Infante(
+                TFCurp.getText(),
+                TFNombre.getText(),
+                CBSexo.getSelectedItem().toString(),
+                s.format((Date) SFecha.getValue()),
+                CBEstado.getSelectedItem().toString()
+        );
+
+        if (kid.borrar(cnx.con) == 1) {
+            JOptionPane.showMessageDialog(this, "Datos del infante eliminados.");
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "No se pudo realizar la eliminación.");
+        }
+    }
+
+    private void BCancelarActionPerformed(java.awt.event.ActionEvent evt) {
+        this.dispose();
+    }
+
+    public static void main(String args[]) {
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
+            logger.log(java.util.logging.Level.SEVERE, null, ex);
+        }
+
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                JDInfantes dialog = new JDInfantes(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
+            }
+        });
+    }
+
+    private javax.swing.JButton BActualizar;
+    private javax.swing.JButton BBorrar;
+    private javax.swing.JButton BCancelar;
+    private javax.swing.JButton BRegistrar;
+    private javax.swing.JComboBox<String> CBEstado;
+    private javax.swing.JComboBox<String> CBSexo;
+    private javax.swing.JSpinner SFecha;
+    private javax.swing.JTextField TFCurp;
+    private javax.swing.JTextField TFNombre;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+}
