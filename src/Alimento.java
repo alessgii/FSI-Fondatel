@@ -1,17 +1,20 @@
+import java.io.InputStream;
 import java.sql.*;
+import javax.swing.ImageIcon;
 
 public class Alimento {
 
     static String todos = "SELECT * FROM alimentos ORDER BY nombre DESC";
     static String ids = "SELECT idalimentos FROM alimentos ORDER BY idalimentos";
     
-    String idalimentos, nombre, descripcion, precio, foto, categoria, estado;
+    String idalimentos, nombre, descripcion, precio, categoria, estado;
+    ImageIcon foto;
 
     public Alimento() {
 
     }
 
-    public Alimento(String idalimentos, String nombre, String descripcion, String precio, String foto, String categoria, String estado) {
+    public Alimento(String idalimentos, String nombre, String descripcion, String precio, ImageIcon foto, String categoria, String estado) {
         this.idalimentos = idalimentos;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -30,7 +33,11 @@ public class Alimento {
             ps.setString(2, nombre);
             ps.setString(3, descripcion);
             ps.setString(4, precio);
-            ps.setString(5, foto);
+            
+            Conexion c = new Conexion();
+            InputStream is = c.ImagenBytes(foto);
+            ps.setBinaryStream(5, is);
+            
             ps.setString(6, categoria);
             ps.setString(7, estado);
             return ps.executeUpdate();
@@ -63,7 +70,11 @@ public class Alimento {
             ps.setString(1, nombre);
             ps.setString(2, descripcion);
             ps.setString(3, precio);
-            ps.setString(4, foto);
+            
+            Conexion c = new Conexion();
+            InputStream is = c.ImagenBytes(foto);
+            ps.setBinaryStream(4, is);
+            
             ps.setString(5, categoria);
             ps.setString(6, estado);
             ps.setString(7, idalimentos);
@@ -74,5 +85,4 @@ public class Alimento {
             return resultado;
         }
     }
-
 }
