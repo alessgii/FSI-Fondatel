@@ -1,3 +1,6 @@
+
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -8,14 +11,20 @@
  * @author Hugo Guzman
  */
 public class FGerente extends javax.swing.JFrame {
-    
+
+    Conexion cnx = new Conexion();
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FGerente.class.getName());
 
-    /**
-     * Creates new form FGerente
-     */
     public FGerente() {
         initComponents();
+        setLocationRelativeTo(this);
+        jToolBar1.setFloatable(false);
+        
+        if (cnx.conectar("localhost", "fondatel", "root", "") == 0) {
+            JOptionPane.showMessageDialog(this, "Sin conexión. La ventana se cerrará...");
+            System.exit(0);
+        }
     }
 
     /**
@@ -27,32 +36,130 @@ public class FGerente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jToolBar1 = new javax.swing.JToolBar();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        BCerrarSesion = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        BAgregar = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gerente");
 
-        jLabel1.setText("Gerente");
+        jToolBar1.setBackground(new java.awt.Color(102, 51, 0));
+        jToolBar1.setForeground(new java.awt.Color(255, 51, 0));
+        jToolBar1.setRollover(true);
+
+        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel6.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("      ");
+        jToolBar1.add(jLabel6);
+
+        jLabel7.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel7.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("      ");
+        jToolBar1.add(jLabel7);
+
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("PANEL DEL GERENTE");
+        jToolBar1.add(jLabel2);
+
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("                                                                                                                                               ");
+        jToolBar1.add(jLabel1);
+
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel3.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("      ");
+        jToolBar1.add(jLabel3);
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/usuario.png"))); // NOI18N
+        jToolBar1.add(jLabel4);
+
+        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel5.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("      ");
+        jToolBar1.add(jLabel5);
+
+        BCerrarSesion.setBackground(new java.awt.Color(255, 51, 0));
+        BCerrarSesion.setForeground(new java.awt.Color(255, 255, 255));
+        BCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cerrar-sesion-alt.png"))); // NOI18N
+        BCerrarSesion.setFocusable(false);
+        BCerrarSesion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        BCerrarSesion.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        BCerrarSesion.addActionListener(this::BCerrarSesionActionPerformed);
+        jToolBar1.add(BCerrarSesion);
+
+        jLabel8.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel8.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("      ");
+        jToolBar1.add(jLabel8);
+
+        BAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/anadiendo.png"))); // NOI18N
+        BAgregar.setText("REGISTRAR ALIMENTOS");
+        BAgregar.addActionListener(this::BAgregarActionPerformed);
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/comida-japonesa.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jLabel1)
-                .addContainerGap(340, Short.MAX_VALUE))
+                .addGap(62, 62, 62)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(BAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1)
-                .addContainerGap(266, Short.MAX_VALUE))
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(100, 100, 100))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(BAgregar)
+                        .addGap(119, 119, 119))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BCerrarSesionActionPerformed
+        this.dispose();
+        FAcceso fa = new FAcceso();
+//        cnx.desconectar();
+        fa.setVisible(true);
+    }//GEN-LAST:event_BCerrarSesionActionPerformed
+
+    private void BAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BAgregarActionPerformed
+        this.dispose();
+        FAlimentos fa = new FAlimentos();
+//        cnx.desconectar();
+        fa.setVisible(true);
+        fa.obtenerConexion(cnx);
+
+    }//GEN-LAST:event_BAgregarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -80,6 +187,17 @@ public class FGerente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BAgregar;
+    private javax.swing.JButton BCerrarSesion;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
 }

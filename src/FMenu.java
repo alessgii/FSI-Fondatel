@@ -49,18 +49,32 @@ public class FMenu extends javax.swing.JFrame {
     private void initComponents() {
 
         jToolBar1 = new javax.swing.JToolBar();
+        jLabel5 = new javax.swing.JLabel();
         BCompleto = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
         CBCategoria = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        BCerrarSesion = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TMenu = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Menu");
 
-        jToolBar1.setBackground(new java.awt.Color(0, 204, 204));
+        jToolBar1.setBackground(new java.awt.Color(102, 51, 0));
         jToolBar1.setForeground(new java.awt.Color(255, 51, 0));
         jToolBar1.setRollover(true);
 
-        BCompleto.setBackground(new java.awt.Color(0, 153, 153));
+        jLabel5.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("       ");
+        jToolBar1.add(jLabel5);
+
+        BCompleto.setBackground(new java.awt.Color(153, 153, 153));
         BCompleto.setForeground(new java.awt.Color(255, 255, 255));
         BCompleto.setText("COMPLETO");
         BCompleto.setFocusable(false);
@@ -72,13 +86,47 @@ public class FMenu extends javax.swing.JFrame {
         BCompleto.addActionListener(this::BCompletoActionPerformed);
         jToolBar1.add(BCompleto);
 
-        CBCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jLabel4.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("       ");
+        jToolBar1.add(jLabel4);
+
+        CBCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "TODOS", "Item 2", "Item 3", "Item 4" }));
         CBCategoria.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CATEGORÍA:", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP));
         CBCategoria.setMaximumSize(new java.awt.Dimension(200, 64));
         CBCategoria.setMinimumSize(new java.awt.Dimension(200, 64));
         CBCategoria.setPreferredSize(new java.awt.Dimension(200, 64));
         CBCategoria.addItemListener(this::CBCategoriaItemStateChanged);
         jToolBar1.add(CBCategoria);
+
+        jLabel2.setText("                                                                      ");
+        jToolBar1.add(jLabel2);
+
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("MENÚ DE FONDATEL");
+        jToolBar1.add(jLabel1);
+
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("       ");
+        jToolBar1.add(jLabel3);
+
+        BCerrarSesion.setBackground(new java.awt.Color(255, 51, 0));
+        BCerrarSesion.setForeground(new java.awt.Color(255, 255, 255));
+        BCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cerrar-sesion-alt.png"))); // NOI18N
+        BCerrarSesion.setFocusable(false);
+        BCerrarSesion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        BCerrarSesion.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        BCerrarSesion.addActionListener(this::BCerrarSesionActionPerformed);
+        jToolBar1.add(BCerrarSesion);
+
+        jLabel6.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("       ");
+        jToolBar1.add(jLabel6);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         TMenu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -93,23 +141,37 @@ public class FMenu extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(TMenu);
 
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 505, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(33, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 18, Short.MAX_VALUE))
+                .addGap(5, 5, 5)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -129,6 +191,13 @@ public class FMenu extends javax.swing.JFrame {
     private void BCompletoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BCompletoActionPerformed
         cnx.entablar(todo, TMenu);
     }//GEN-LAST:event_BCompletoActionPerformed
+
+    private void BCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BCerrarSesionActionPerformed
+        this.dispose();
+        FAcceso fa = new FAcceso();
+        cnx.desconectar();
+        fa.setVisible(true);
+    }//GEN-LAST:event_BCerrarSesionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -156,9 +225,17 @@ public class FMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BCerrarSesion;
     private javax.swing.JButton BCompleto;
     private javax.swing.JComboBox<String> CBCategoria;
     private javax.swing.JTable TMenu;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables

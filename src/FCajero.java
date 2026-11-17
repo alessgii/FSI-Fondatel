@@ -1,13 +1,21 @@
+
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author Hugo Guzman
  */
 public class FCajero extends javax.swing.JFrame {
+    
+    Conexion cnx = new Conexion();
+    
+    String todo = "SELECT * FROM tickets ORDER BY mesas_numero, folio";
+    String categorias = "SELECT DISTINCT mesas_numero FROM tickets ORDER BY mesas_numero";
+    String por_categoria = "SELECT folio, fecha_hora AS fecha, mesas_numero AS mesa, silla, nombrec AS cliente, nombre AS pedido, precio, nombree AS mesero FROM tickets WHERE mesas_numero = '%s' ORDER BY silla, folio";
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FCajero.class.getName());
 
@@ -16,6 +24,18 @@ public class FCajero extends javax.swing.JFrame {
      */
     public FCajero() {
         initComponents();
+        setLocationRelativeTo(this);
+        setTitle("PEDIDOS DE FONDATEL");
+        jToolBar1.setFloatable(false);
+        
+        if (cnx.conectar("localhost", "fondatel", "root", "") == 1) {
+            cnx.entablar(todo, TMenu);
+            cnx.seleccionar(categorias, CBCategoria);
+            
+        } else {
+            JOptionPane.showMessageDialog(this, "Sin conexión. La ventana se cerrará...");
+            System.exit(0);
+        }
     }
 
     /**
@@ -27,22 +47,180 @@ public class FCajero extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jToolBar1 = new javax.swing.JToolBar();
+        jLabel6 = new javax.swing.JLabel();
+        BCompleto = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        CBCategoria = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        BCerrarSesion = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TMenu = new javax.swing.JTable();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Cajero");
+
+        jToolBar1.setBackground(new java.awt.Color(102, 51, 0));
+        jToolBar1.setForeground(new java.awt.Color(255, 51, 0));
+        jToolBar1.setRollover(true);
+
+        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel6.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("      ");
+        jToolBar1.add(jLabel6);
+
+        BCompleto.setBackground(new java.awt.Color(153, 153, 153));
+        BCompleto.setForeground(new java.awt.Color(255, 255, 255));
+        BCompleto.setText("COMPLETO");
+        BCompleto.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        BCompleto.setMaximumSize(new java.awt.Dimension(100, 64));
+        BCompleto.setMinimumSize(new java.awt.Dimension(100, 64));
+        BCompleto.setPreferredSize(new java.awt.Dimension(100, 64));
+        BCompleto.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        BCompleto.addActionListener(this::BCompletoActionPerformed);
+        jToolBar1.add(BCompleto);
+
+        jLabel7.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel7.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("      ");
+        jToolBar1.add(jLabel7);
+
+        CBCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "TODOS", "Item 2", "Item 3", "Item 4" }));
+        CBCategoria.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "MESA:", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP));
+        CBCategoria.setMaximumSize(new java.awt.Dimension(200, 64));
+        CBCategoria.setMinimumSize(new java.awt.Dimension(200, 64));
+        CBCategoria.setPreferredSize(new java.awt.Dimension(200, 64));
+        CBCategoria.addItemListener(this::CBCategoriaItemStateChanged);
+        jToolBar1.add(CBCategoria);
+
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("                                                                                                                                               ");
+        jToolBar1.add(jLabel1);
+
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("rol: cajero");
+        jToolBar1.add(jLabel2);
+
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel3.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("      ");
+        jToolBar1.add(jLabel3);
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/usuario.png"))); // NOI18N
+        jToolBar1.add(jLabel4);
+
+        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel5.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("      ");
+        jToolBar1.add(jLabel5);
+
+        BCerrarSesion.setBackground(new java.awt.Color(255, 51, 0));
+        BCerrarSesion.setForeground(new java.awt.Color(255, 255, 255));
+        BCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cerrar-sesion-alt.png"))); // NOI18N
+        BCerrarSesion.setFocusable(false);
+        BCerrarSesion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        BCerrarSesion.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        BCerrarSesion.addActionListener(this::BCerrarSesionActionPerformed);
+        jToolBar1.add(BCerrarSesion);
+
+        jLabel8.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel8.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("      ");
+        jToolBar1.add(jLabel8);
+
+        jPanel1.setBackground(new java.awt.Color(126, 93, 60));
+
+        TMenu.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(TMenu);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void CBCategoriaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CBCategoriaItemStateChanged
+        String cat = CBCategoria.getSelectedItem().toString();
+        
+        if (cat.equals("Todos")) {
+            cnx.entablar(todo, TMenu);
+        } else {
+            String sql = String.format(por_categoria, cat);
+            cnx.entablar(sql, TMenu);
+        }
+    }//GEN-LAST:event_CBCategoriaItemStateChanged
+
+    private void BCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BCerrarSesionActionPerformed
+        this.dispose();
+        FAcceso fa = new FAcceso();
+        cnx.desconectar();
+        fa.setVisible(true);
+    }//GEN-LAST:event_BCerrarSesionActionPerformed
+
+    private void BCompletoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BCompletoActionPerformed
+        cnx.entablar(todo, TMenu);
+    }//GEN-LAST:event_BCompletoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -70,5 +248,20 @@ public class FCajero extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BCerrarSesion;
+    private javax.swing.JButton BCompleto;
+    private javax.swing.JComboBox<String> CBCategoria;
+    private javax.swing.JTable TMenu;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
 }
